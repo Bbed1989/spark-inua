@@ -1,0 +1,17 @@
+{
+    "name": "Spark.in.ua — Літературна платформа",
+    "short_name": "Spark",
+    "description": "Платформа для українських авторів і читачів. Публікуй, читай, підтримуй.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ff8800",
+    "icons": [
+      {
+        "src": "/favicon.ico",
+        "sizes": "16x16 32x32 64x64 128x128",
+        "type": "image/x-icon"
+      }
+    ]
+  }
+  
