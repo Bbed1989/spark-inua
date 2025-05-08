@@ -1,7 +1,7 @@
 {
     "cleanUrls": true,
     "trailingSlash": false,
-    "headers": [
+    "headers": [ 
       {
         "source": "/favicon.ico",
         "headers": [
