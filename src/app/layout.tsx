@@ -1,34 +1,18 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Spark.in.ua — Літературна платформа",
-  description: "Платформа для українських авторів і читачів. Публікуй, читай, підтримуй.",
-};
-
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ua">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html>
+      <body className="min-h-screen bg-gray-50 text-gray-900">
+        <header className="flex justify-between p-4 bg-blue-600 text-white">
+          <a href="/" className="font-bold text-xl">Spark.in.ua</a>
+          <nav className="space-x-4">
+            <a href="/about">Про платформу</a>
+            <a href="/authors">Автори та твори</a>
+          </nav>
+        </header>
+        <main className="p-4">{children}</main>
+        <footer className="p-4 text-center text-sm text-gray-600">
+          © {new Date().getFullYear()} Spark.in.ua. Усі права захищено.
+        </footer>
       </body>
     </html>
   );
