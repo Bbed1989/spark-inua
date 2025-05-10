@@ -5,7 +5,6 @@ export default function About() {
       <p className="text-lg max-w-2xl">
         Spark - це літературна платформа для авторів та читачів. Публікуйте, читайте, підтримуйте авторів.
       </p>
-      <a href="/" className="text-blue-500 underline mt-4">Повернутися на головну</a>
     </div>
   );
 }

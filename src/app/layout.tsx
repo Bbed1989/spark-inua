@@ -13,8 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </h1>
           </Link>
         </div>
-        <nav className="flex space-x-4">
-          <Link href="/" className="text-gray-600 hover:text-blue-600 transition">Головна</Link>
+        <nav className="flex space-x-10">
           <Link href="/about" className="text-gray-600 hover:text-blue-600 transition">Про платформу</Link>
           <Link href="/authors" className="text-gray-600 hover:text-blue-600 transition">Автори та твори</Link>
         </nav>
