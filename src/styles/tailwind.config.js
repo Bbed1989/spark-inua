@@ -7,7 +7,15 @@ module.exports = {
     "./src/components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+        extend: {
+      colors: {
+        primary: '#1D4ED8', // Синій
+        secondary: '#9333EA', // Фіолетовий
+        textDark: '#1F2937', // Темний текст
+        textLight: '#6B7280', // Світлий текст
+        background: '#F3F4F6', // Світлий фон
+      },
+    },
   },
   plugins: [],
 };
