@@ -1,9 +1,9 @@
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-center">
-      <h1 className="text-4xl font-bold mb-4">Spark.in.ua</h1>
-      <p className="text-lg">Ласкаво просимо на літературну платформу!</p>
-      <a href="/about" className="text-blue-500 underline mt-4">Дізнатися більше</a>
+    <div className="text-center space-y-4">
+      <h2 className="text-3xl font-bold">Ласкаво просимо на літературну платформу!</h2>
+      <p>Досліджуйте, читайте та публікуйте свої твори.</p>
+      <a href="/about" className="text-blue-600 hover:underline">Дізнатися більше</a>
     </div>
   );
 }
