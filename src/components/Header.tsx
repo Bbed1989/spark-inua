@@ -1,37 +1,23 @@
 // src/components/Header.tsx
-
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Header() {
-  const pathname = usePathname();
-
   return (
-    <header className="w-full max-w-4xl flex items-center justify-between py-4 px-8 bg-white shadow-md rounded-md">
+    <header className="w-full max-w-4xl flex justify-between items-center py-4 px-8 bg-white shadow-md rounded-md">
       <div className="flex items-center space-x-3">
-        <Image src="/logo.png" alt="Spark Logo" width={40} height={40} />
-        <Link href="/" className="text-2xl font-bold text-blue-600 hover:text-blue-800 transition">
-          Spark.in.ua
+        <Link href="/" className="flex items-center space-x-2">
+          <Image src="/logo.png" alt="Spark Logo" width={40} height={40} />
+          <h1 className="text-2xl font-bold text-blue-600 hover:text-blue-800 transition">
+            Spark.in.ua
+          </h1>
         </Link>
       </div>
-      <nav className="flex space-x-4">
-        <Link
-          href="/"
-          className={`text-gray-600 hover:text-blue-600 transition ${
-            pathname === "/" ? "text-blue-800 font-semibold" : ""
-          }`}
-        >
+      <nav className="flex space-x-6">
+        <Link href="/" className="text-gray-600 hover:text-blue-600 transition">
           Головна
         </Link>
-        <Link
-          href="/authors"
-          className={`text-gray-600 hover:text-blue-600 transition ${
-            pathname === "/authors" ? "text-blue-800 font-semibold" : ""
-          }`}
-        >
+        <Link href="/authors" className="text-gray-600 hover:text-blue-600 transition">
           Автори та твори
         </Link>
       </nav>

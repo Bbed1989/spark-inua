@@ -15,6 +15,9 @@ module.exports = {
         textLight: '#6B7280', // Світлий текст
         background: '#F3F4F6', // Світлий фон
       },
+            fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],
