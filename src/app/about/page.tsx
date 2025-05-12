@@ -1,38 +1,26 @@
-// src/app/about/page.tsx
-export default function AboutPage() {
+export default function About() {
   return (
-    <div className="max-w-4xl mx-auto p-6 text-gray-800">
-      <h1 className="text-3xl font-bold mb-4">Про платформу</h1>
-      <p className="text-lg mb-4">
-        <strong>Ми створюємо простір для живої української літератури.</strong>
-      </p>
-      <p className="mb-4">
-        Це не просто сайт для текстів. Це місце, де автори можуть публікувати свої твори, читачі — знаходити голоси, які резонують, а спільнота — підтримувати одне одного.
-      </p>
-      <p className="mb-4">
-        Ми особливо підтримуємо тих, чий досвід часто лишається поза літературою — <strong>ветеранів, волонтерів, очевидців змін.</strong> Віримо, що їхні історії важливі. Вони можуть бути художніми, документальними, болючими чи смішними — головне, що вони справжні.
+    <div className="min-h-screen flex flex-col items-center justify-start bg-white text-gray-900 p-6 space-y-8">
+      <h2 className="text-3xl font-bold text-blue-800">Про платформу</h2>
+      <p className="max-w-2xl text-center text-lg text-gray-700">
+        Ми створюємо простір для живої української літератури.
+        <br />
+        Це місце, де автори можуть публікувати свої твори, читачі — знаходити голоси, які резонують, а спільнота — підтримувати одне одного.
       </p>
 
-      <hr className="my-6" />
+      <div className="max-w-2xl space-y-4">
+        <h3 className="text-2xl font-semibold text-blue-700">Що ми робимо:</h3>
+        <ul className="list-disc list-inside text-gray-700">
+          <li><strong>Автори:</strong> публікують лонгріди, оповідання, есе, глави романів.</li>
+          <li><strong>Читачі:</strong> читають безкоштовно та залишають відгуки.</li>
+          <li><strong>Підтримка:</strong> авторів — через донати або внутрішні бонуси.</li>
+          <li><strong>Платформа:</strong> заохочує взаємодію, видимість і повагу.</li>
+        </ul>
+      </div>
 
-      <h2 className="text-2xl font-bold mb-4">Що ми робимо:</h2>
-      <ul className="list-disc list-inside space-y-2 mb-4">
-        <li><strong>Автори:</strong> публікують лонгріди, оповідання, есе, глави романів.</li>
-        <li><strong>Читачі:</strong> читають безкоштовно та залишають відгуки.</li>
-        <li><strong>Підтримка:</strong> авторів — через донати або внутрішні бонуси.</li>
-        <li><strong>Платформа:</strong> заохочує взаємодію, видимість і повагу.</li>
-      </ul>
-
-      <hr className="my-6" />
-
-      <h2 className="text-2xl font-bold mb-4">Наш підхід</h2>
-      <p className="mb-4">
-        Ми говоримо просто. Ми віримо в силу слова. Ми будуємо нову літературну екосистему, де можна бути собою і не боятися писати.
-      </p>
-
-      <blockquote className="mt-6 border-l-4 border-blue-600 pl-4 text-xl italic">
-        Пиши. Читай. Підтримуй.
-      </blockquote>
+      <div className="text-center text-gray-600 mt-6">
+        <p className="italic">Пиши. Читай. Підтримуй.</p>
+      </div>
     </div>
   );
 }
