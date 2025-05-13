@@ -14,9 +14,6 @@ export default function Header() {
         </Link>
       </div>
       <nav className="flex space-x-6">
-        <Link href="/" className="text-gray-600 hover:text-blue-600 transition">
-          Головна
-        </Link>
         <Link href="/authors" className="text-gray-600 hover:text-blue-600 transition">
           Автори та твори
         </Link>
