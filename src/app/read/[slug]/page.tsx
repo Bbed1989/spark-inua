@@ -2,8 +2,13 @@
 import { texts } from "../../data/texts";
 import ReactMarkdown from "react-markdown";
 
-export default function ReadPage({ params }: { params: { slug: string } }) {
-  const text = texts.find((t) => t.slug === params.slug);
+export default async function ReadPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const text = texts.find((t) => t.slug === slug);
 
   if (!text) {
     return (
@@ -12,7 +17,7 @@ export default function ReadPage({ params }: { params: { slug: string } }) {
       </div>
     );
   }
-   console.log(text.content);
+
   return (
     <div className="min-h-screen flex flex-col items-center px-4 py-8">
       <h1 className="text-4xl font-bold mb-2">{text.title}</h1>

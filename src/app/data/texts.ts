@@ -14,7 +14,7 @@ export const texts: Text[] = [
     author: "Леся Українка",
     description: "Поетичний маніфест боротьби та віри всупереч усьому.",
     slug: "contra-spem-spero",
-    content: String.raw`
+    content: `
 # Contra spem spero!
 
 Я на гору круту крем'яную  
