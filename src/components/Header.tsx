@@ -14,11 +14,23 @@ export default function Header() {
         </Link>
       </div>
       <nav className="flex space-x-6">
-        <Link href="/authors" className="text-gray-600 hover:text-blue-600 transition">
+        <Link
+          href="/authors"
+          className="text-gray-600 hover:text-blue-600 transition"
+        >
           Автори
         </Link>
-        <Link href="/texts" className="text-gray-600 hover:text-blue-600 transition">
+        <Link
+          href="/texts"
+          className="text-gray-600 hover:text-blue-600 transition"
+        >
           Тексти
+        </Link>
+        <Link
+          href="/login"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+        >
+          Логін
         </Link>
       </nav>
     </header>
