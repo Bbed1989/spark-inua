@@ -22,7 +22,7 @@ export default function LoginPage() {
       <h1 className="text-3xl font-bold mb-6">Вхід у Spark</h1>
 
       <button
-        onClick={() => signIn("google")}
+        onClick={() => signIn("google", { callbackUrl: "/profile" })}
         className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition mb-8"
       >
         Увійти через Google
