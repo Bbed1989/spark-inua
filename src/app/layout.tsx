@@ -3,9 +3,13 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SessionWrapper from "../components/SessionWrapper";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-   <html lang="uk" suppressHydrationWarning>
+    <html lang="uk" suppressHydrationWarning>
       <body>
         <SessionWrapper>
           <div className="min-h-screen flex flex-col items-center justify-between bg-gray-50 text-gray-900 p-4">

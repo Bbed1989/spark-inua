@@ -39,7 +39,9 @@ export default function AuthorsPage() {
             key={author.id}
             className="bg-white rounded-lg shadow p-6 text-left hover:shadow-md transition"
           >
-            <h2 className="text-xl font-semibold text-blue-700">{author.name}</h2>
+            <h2 className="text-xl font-semibold text-blue-700">
+              {author.name}
+            </h2>
             <p className="text-gray-700 mt-2">{author.bio}</p>
           </div>
         ))}

@@ -21,12 +21,6 @@
       }
     ]
   },
-  "include": [
-    "src",
-    ".next/types/**/*.ts"
-, "tailwind.config.js"  ],
-  "exclude": [
-    "node_modules",
-    "out"
-  ]
+  "include": ["src", ".next/types/**/*.ts", "tailwind.config.js"],
+  "exclude": ["node_modules", "out"]
 }

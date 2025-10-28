@@ -7,7 +7,12 @@ type CardProps = {
   children?: React.ReactNode;
 };
 
-export default function Card({ title, author, description, children }: CardProps) {
+export default function Card({
+  title,
+  author,
+  description,
+  children,
+}: CardProps) {
   return (
     <div className="bg-white rounded-xl shadow-md p-6 mb-6 max-w-md w-full hover:shadow-lg transition">
       <h2 className="text-2xl font-bold text-blue-700 mb-2">{title}</h2>
