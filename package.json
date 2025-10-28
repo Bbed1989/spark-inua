@@ -8,14 +8,15 @@
     "start": "next start",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --config eslint.config.js",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix --config eslint.config.js",
     "format": "prettier --write .",
     "prepare": "husky install"
   },
   "lint-staged": {
-  "*.{js,jsx,ts,tsx}": [
-    "eslint --fix --config eslint.config.js",
-    "prettier --write"
-  ]
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --config eslint.config.js",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",

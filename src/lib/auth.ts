@@ -1,7 +1,6 @@
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
-import type { Session } from "next-auth";
 
 declare module "next-auth" {
   interface Session {
@@ -28,7 +27,10 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         // Тимчасова заглушка для демо-юзера
-        if (credentials?.email === "demo@example.com" && credentials.password === "password123!") {
+        if (
+          credentials?.email === "demo@example.com" &&
+          credentials.password === "password123!"
+        ) {
           return { id: "1", name: "Demo User", email: "demo@example.com" };
         }
         return null;

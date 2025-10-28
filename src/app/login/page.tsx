@@ -8,12 +8,6 @@ export default function LoginPage() {
 
   const handleCredentialsLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await signIn("credentials", {
-      redirect: true,
-      email,
-      password,
-      callbackUrl: "/profile", // змінити на бажану сторінку після входу
-    });
     // Обробка помилок, якщо треба
   };
 
@@ -28,9 +22,14 @@ export default function LoginPage() {
         Увійти через Google
       </button>
 
-      <form onSubmit={handleCredentialsLogin} className="w-full max-w-sm bg-white p-6 rounded-md shadow">
+      <form
+        onSubmit={handleCredentialsLogin}
+        className="w-full max-w-sm bg-white p-6 rounded-md shadow"
+      >
         <div className="mb-4">
-          <label htmlFor="email" className="block mb-1 font-medium">Email</label>
+          <label htmlFor="email" className="block mb-1 font-medium">
+            Email
+          </label>
           <input
             type="email"
             id="email"
@@ -42,7 +41,9 @@ export default function LoginPage() {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="password" className="block mb-1 font-medium">Пароль</label>
+          <label htmlFor="password" className="block mb-1 font-medium">
+            Пароль
+          </label>
           <input
             type="password"
             id="password"

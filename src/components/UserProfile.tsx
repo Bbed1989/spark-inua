@@ -18,8 +18,12 @@ export default function UserProfile() {
   return (
     <div className="max-w-md mx-auto bg-white shadow-md rounded-md p-6 text-center">
       <h2 className="text-2xl font-bold mb-4">Профіль користувача</h2>
-      <p className="mb-2"><strong>Імʼя:</strong> {user?.name || "Невідомо"}</p>
-      <p className="mb-2"><strong>Email:</strong> {user?.email}</p>
+      <p className="mb-2">
+        <strong>Імʼя:</strong> {user?.name || "Невідомо"}
+      </p>
+      <p className="mb-2">
+        <strong>Email:</strong> {user?.email}
+      </p>
 
       {user?.image && (
         <img

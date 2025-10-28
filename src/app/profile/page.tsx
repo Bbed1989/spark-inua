@@ -12,7 +12,9 @@ export default function UserProfile() {
 
   return (
     <div className="text-center space-y-4">
-      <h1 className="text-2xl font-bold">Привіт, {session.user?.name || "користувачу"}!</h1>
+      <h1 className="text-2xl font-bold">
+        Привіт, {session.user?.name || "користувачу"}!
+      </h1>
       <p>Email: {session.user?.email}</p>
       {session.user?.image && (
         <img
