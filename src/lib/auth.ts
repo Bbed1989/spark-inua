@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
               email: { label: "Email", type: "email" },
               password: { label: "Password", type: "password" },
             },
-            async authorize(credentials) {
+            async authorize(credentials): Promise<User | null> {
               if (!credentials?.email || !credentials?.password) return null;
 
               const user = await prisma.user.findUnique({
@@ -48,12 +48,11 @@ export const authOptions: NextAuthOptions = {
                 credentials.password,
                 user.password
               );
-
               if (!isValid) return null;
 
               return {
-                id: user.id.toString(),
-                email: user.email,
+                id: user.id, // string
+                email: user.email!,
                 name: user.name,
               } as User;
             },
