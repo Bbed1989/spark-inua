@@ -8,7 +8,18 @@ export default function LoginPage() {
 
   const handleCredentialsLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Обробка помилок, якщо треба
+
+    const res = await signIn("credentials", {
+      redirect: true, // або false, якщо хочеш сам обробляти редірект
+      email,
+      password,
+      callbackUrl: "/profile", // куди перенаправити після логіну
+    });
+
+    if (res?.error) {
+      console.error("Login failed:", res.error);
+      // тут можна показати повідомлення користувачу
+    }
   };
 
   return (
