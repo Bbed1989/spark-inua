@@ -2,7 +2,8 @@ import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient, User } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import type { User } from "next-auth";
 import bcrypt from "bcrypt";
 
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
@@ -51,7 +52,7 @@ export const authOptions: NextAuthOptions = {
               if (!isValid) return null;
 
               return {
-                id: user.id.toString(), // string
+                id: String(user.id), // string
                 email: user.email!,
                 name: user.name,
               } as User;
