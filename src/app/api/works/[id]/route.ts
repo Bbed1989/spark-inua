@@ -2,14 +2,18 @@ import { NextResponse } from "next/server";
 import { prisma } from "../../../../lib/prisma";
 import { workUpdateSchema } from "../../../../lib/validations/work";
 
-// окремий інтерфейс для контексту
-interface Context {
-  params: { id: string };
+function getIdFromReq(req: Request) {
+  const url = new URL(req.url);
+  // /api/works/<id> → беремо останній сегмент
+  const segments = url.pathname.split("/").filter(Boolean);
+  return segments[segments.length - 1] || "";
 }
 
-export async function GET(req: Request, { params }: Context) {
+export async function GET(req: Request) {
+  const id = getIdFromReq(req);
+
   const work = await prisma.work.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: { author: true },
   });
 
@@ -20,28 +24,30 @@ export async function GET(req: Request, { params }: Context) {
   return NextResponse.json(work);
 }
 
-export async function PUT(req: Request, { params }: Context) {
+export async function PUT(req: Request) {
   try {
+    const id = getIdFromReq(req);
     const body = await req.json();
     const parsed = workUpdateSchema.parse(body);
 
     const work = await prisma.work.update({
-      where: { id: params.id },
+      where: { id },
       data: parsed,
     });
 
     return NextResponse.json(work);
   } catch (err: unknown) {
-    if (err instanceof Error) {
-      return NextResponse.json({ error: err.message }, { status: 400 });
-    }
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : "Invalid request" },
+      { status: 400 }
+    );
   }
 }
 
-export async function DELETE(_: Request, { params }: Context) {
+export async function DELETE(req: Request) {
   try {
-    await prisma.work.delete({ where: { id: params.id } });
+    const id = getIdFromReq(req);
+    await prisma.work.delete({ where: { id } });
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
