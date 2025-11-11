@@ -4,12 +4,18 @@ import { workUpdateSchema } from "../../../../lib/validations/work";
 
 type Params = { params: { id: string } };
 
-export async function GET(_: Request, { params }: Params) {
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   const work = await prisma.work.findUnique({
     where: { id: params.id },
-    include: { author: true },
   });
-  if (!work) return NextResponse.json({ error: "Not found" }, { status: 404 });
+
+  if (!work) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
   return NextResponse.json(work);
 }
 

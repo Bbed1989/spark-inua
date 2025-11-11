@@ -15,7 +15,13 @@ export async function POST(req: Request) {
     const parsed = workSchema.parse(body);
 
     const work = await prisma.work.create({
-      data: parsed,
+      data: {
+        title: parsed.title,
+        description: parsed.description,
+        author: {
+          connect: { id: parsed.authorId },
+        },
+      },
     });
 
     return NextResponse.json(work, { status: 201 });
