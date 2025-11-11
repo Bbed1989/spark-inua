@@ -17,6 +17,7 @@ model User {
   emailVerified DateTime?
   accounts      Account[]
   sessions      Session[]
+  works         Work[]    @relation("UserWorks")
 }
 
 model Account {
@@ -51,4 +52,14 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Work {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  authorId    String
+  author      User     @relation("UserWorks", fields: [authorId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
