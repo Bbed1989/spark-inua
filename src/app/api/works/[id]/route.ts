@@ -40,7 +40,9 @@ export async function PUT(req: Request, context: unknown) {
 export async function DELETE(_: Request, context: unknown) {
   try {
     const { id } = (context as { params: { id: string } }).params;
+
     await prisma.work.delete({ where: { id } });
+
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Not found" }, { status: 404 });

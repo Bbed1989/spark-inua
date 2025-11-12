@@ -2,16 +2,19 @@
   "name": "spark-inua",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "seed": "ts-node prisma/seed.ts",
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --config eslint.config.js",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix --config eslint.config.js",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prisma:generate": "prisma generate",
+    "build": "npm run prisma:generate && next build",
+    "postinstall": "prisma generate"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
