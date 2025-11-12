@@ -2,12 +2,11 @@ import { NextResponse } from "next/server";
 import { prisma } from "../../../../lib/prisma";
 import { workUpdateSchema } from "../../../../lib/validations/work";
 
-export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(req: Request, context: unknown) {
+  const { id } = (context as { params: { id: string } }).params;
+
   const work = await prisma.work.findUnique({
-    where: { id: params.id }, // рядок, не число
+    where: { id },
     include: { author: true },
   });
 
@@ -18,16 +17,14 @@ export async function GET(
   return NextResponse.json(work);
 }
 
-export async function PUT(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(req: Request, context: unknown) {
   try {
+    const { id } = (context as { params: { id: string } }).params;
     const body = await req.json();
     const parsed = workUpdateSchema.parse(body);
 
     const work = await prisma.work.update({
-      where: { id: params.id }, // рядок
+      where: { id },
       data: parsed,
     });
 
@@ -40,12 +37,10 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  _: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(_: Request, context: unknown) {
   try {
-    await prisma.work.delete({ where: { id: params.id } }); // рядок
+    const { id } = (context as { params: { id: string } }).params;
+    await prisma.work.delete({ where: { id } });
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
