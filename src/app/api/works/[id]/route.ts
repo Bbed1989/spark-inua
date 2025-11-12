@@ -2,18 +2,12 @@ import { NextResponse } from "next/server";
 import { prisma } from "../../../../lib/prisma";
 import { workUpdateSchema } from "../../../../lib/validations/work";
 
-function getIdFromReq(req: Request) {
-  const url = new URL(req.url);
-  // /api/works/<id> → беремо останній сегмент
-  const segments = url.pathname.split("/").filter(Boolean);
-  return segments[segments.length - 1] || "";
-}
-
-export async function GET(req: Request) {
-  const id = getIdFromReq(req);
-
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   const work = await prisma.work.findUnique({
-    where: { id },
+    where: { id: params.id }, // рядок, не число
     include: { author: true },
   });
 
@@ -24,14 +18,16 @@ export async function GET(req: Request) {
   return NextResponse.json(work);
 }
 
-export async function PUT(req: Request) {
+export async function PUT(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   try {
-    const id = getIdFromReq(req);
     const body = await req.json();
     const parsed = workUpdateSchema.parse(body);
 
     const work = await prisma.work.update({
-      where: { id },
+      where: { id: params.id }, // рядок
       data: parsed,
     });
 
@@ -44,10 +40,12 @@ export async function PUT(req: Request) {
   }
 }
 
-export async function DELETE(req: Request) {
+export async function DELETE(
+  _: Request,
+  { params }: { params: { id: string } }
+) {
   try {
-    const id = getIdFromReq(req);
-    await prisma.work.delete({ where: { id } });
+    await prisma.work.delete({ where: { id: params.id } }); // рядок
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
